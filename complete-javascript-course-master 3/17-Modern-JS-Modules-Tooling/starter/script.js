@@ -19,5 +19,6 @@ import add, { cart } from './shoppingCart.js';
 add('pizza', 2);
 add('bread', 5);
 add('orange', 10);
+add('apples', 12);
 
 console.log(cart);

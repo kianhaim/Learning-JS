@@ -7,7 +7,7 @@ const cart = [];
 const totalPrice = 230;
 const totalQuantity = 10;
 
-export { cart, totalPrice, totalQuantity as tq };
+export { cart, shippingCost, totalPrice, totalQuantity as tq };
 
 export const addToCart = function (product, quantity) {
   cart.push(product, quantity);

@@ -78,3 +78,49 @@ document
     message.remove();
     //message.parentElement.removeChild(message);
   });
+
+// Styles
+
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+// Cant get the style if not declared on CSS
+console.log(message.style.color);
+console.log(message.style.background);
+// USe getComputedStyle  if you really want to get the style
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+/// Setting CSS properties using JS
+
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attribute
+
+// Only gets the standard properties
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.className);
+
+//Non standard
+
+console.log(logo.designer);
+
+// How to get the non standard attributes
+
+console.log(logo.getAttribute('designer'));
+
+// Setting Attribute
+
+logo.alt = 'Beautiful minimalist logo';
+console.log(logo.alt);
+
+// setAttribute;
+logo.setAttribute('company', 'Bankist');
+console.log(logo.getAttribute('company'));
+
+console.log(logo.src);
+console.log(logo.getAttribute('src'));

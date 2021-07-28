@@ -7,6 +7,7 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const header = document.querySelector('.header');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -40,13 +41,13 @@ console.log(document.head);
 console.log(document.body);
 
 document.querySelector('.header');
-const allSelector = document.querySelectorAll('.selector');
-console.log(allSelector);
+const allSections = document.querySelectorAll('.section');
+console.log(allSections);
 
 document.getElementById('section--1');
 const allButtons = document.getElementsByTagName('button');
 
-console.log(allButton);
+console.log(allButtons);
 
 console.log(document.getElementsByClassName('btn'));
 
@@ -56,11 +57,13 @@ const message = document.createElement('div');
 message.classList.add('cookie-message');
 
 message.innerHTML =
-  'We use cookies for improved functionality and analytics. <button class = "btn btn--close-cookie-message">Got It</button>';
+  'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got It</button>';
 
-// header.prepend(message); // put message before header as a child
+// put message before header as a child
+//header.prepend(message);
 
-header.append(message); // put message after the header as a child
+// put message after the header as a child
+header.append(message);
 
 //header.append(message.cloneNode(true)); // put the message after the header as a child and clone it to appear on 2 places.
 
@@ -70,8 +73,8 @@ header.append(message); // put message after the header as a child
 // Delete Elements
 
 document
-  .querySelector('btn--close-cookie')
+  .querySelector('.btn--close-cookie')
   .addEventListener('click', function () {
     message.remove();
-    // message.parentElement.removeChild(message); // old method
+    //message.parentElement.removeChild(message);
   });

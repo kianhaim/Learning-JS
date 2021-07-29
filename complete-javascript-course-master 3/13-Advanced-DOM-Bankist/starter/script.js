@@ -182,3 +182,22 @@ logo.classList.contains('c'); // not includes
 
 //DOnst USE
 //logo.className = 'jonas'
+
+// MORE EVENT LISTENER
+
+const h1 = document.querySelector('h1');
+
+const alertH1 = function (e) {
+  alert('addEventListener Alert');
+  ////////////Remove event listener - triggers the event once
+  h1.removeEventListener('mouseenter', alertH1);
+  //////////// Removing the event listener using timeout - 5 SECONDS
+  setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 1000);
+};
+
+h1.addEventListener('mouseenter', alertH1);
+
+//////////////// Old method of listening for events////////////
+// h1.onmouseenter = function (e) {
+// alert('On mouse enter Event')
+//};

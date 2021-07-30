@@ -211,15 +211,24 @@ const randomColor = () =>
 document.querySelector('.nav__link').addEventListener('click', function (e) {
   //console.log('Link');
   this.style.backgroundColor = randomColor();
-  console.log('LINK', e.target);
+  console.log('LINK', e.target, e.currentTarget);
+  // This keyword and event target are the same
+  console.log(e.currentTarget === this);
+
+  // Stop propagation
+  // e.stopPropagation();
 });
 
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
-  console.log('CONTAINER', e.target);
+  console.log('CONTAINER', e.target, e.currentTarget);
 });
 
-document.querySelector('.nav').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('NAV', e.target);
-});
+document.querySelector('.nav').addEventListener(
+  'click',
+  function (e) {
+    this.style.backgroundColor = randomColor();
+    console.log('NAV', e.target, e.currentTarget);
+  },
+  true
+);

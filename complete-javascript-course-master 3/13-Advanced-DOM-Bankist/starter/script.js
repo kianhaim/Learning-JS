@@ -184,7 +184,7 @@ logo.classList.contains('c'); // not includes
 //logo.className = 'jonas'
 
 // MORE EVENT LISTENER
-
+/*
 const h1 = document.querySelector('h1');
 
 const alertH1 = function (e) {
@@ -201,3 +201,22 @@ h1.addEventListener('mouseenter', alertH1);
 // h1.onmouseenter = function (e) {
 // alert('On mouse enter Event')
 //};
+*/
+///
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  //console.log('Link');
+  this.style.backgroundColor = randomColor();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+});
+
+document.querySelector('.nav').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+});

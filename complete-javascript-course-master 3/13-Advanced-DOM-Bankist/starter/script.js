@@ -139,12 +139,31 @@ const handleHover = function (e) {
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
+// Sticky Navigation
+// This way is taxing to the browser because it fires the scroll function everytime you scroll
+/*
+const initialCoords = section1.getBoundingClientRect();
+window.addEventListener('scroll', function (e) {
+  if (window.scrollY > initialCoords.top) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+});
+*/
+// Sticky Navigation using Intersection Observer API
+const obsCallback = function () {};
+const obsOptions = {};
+
+const observer = new IntersectionObserver(obsCallback, obsOptions);
+
+observer.observe(section1);
 /////////////////////////////
 /////////////////////////////////////
 //////////////////////////////
 
 // Selecting, Creating and Deleting Elements
-
+/*
 //Selecting
 console.log(document.documentElement);
 console.log(document.head);
@@ -338,3 +357,4 @@ console.log(h1.parentElement.children);
 [...h1.parentElement.children].forEach(function (el) {
   if (el !== h1) el.style.transform = 'scale(0.5)';
 });
+*/

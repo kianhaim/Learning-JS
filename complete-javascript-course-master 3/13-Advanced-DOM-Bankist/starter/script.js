@@ -204,7 +204,7 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
-  section.classList.add('section--hidden');
+  //section.classList.add('section--hidden');
 });
 
 /// Lazy Loading images
@@ -234,6 +234,50 @@ const imgObserver = new IntersectionObserver(loadImg, {
 });
 
 imgTarget.forEach(img => imgObserver.observe(img));
+
+// SLider
+const slides = document.querySelectorAll('.slide');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
+let curSlide = 0;
+const maxSlide = slides.length;
+
+// const slider = document.querySelector('.slider');
+
+// slider.style.transform = 'scale(0.4) tanslateX(-800px)';
+// slider.style.overflow = 'visible';
+
+const goToSlide = function (slide) {
+  slides.forEach(
+    (s, i) => (s.style.tranform = `translateX(${100 * (i - curSlide)}%)`)
+  );
+};
+
+goToSlide(0);
+//Next slide
+
+const nextSlide = function () {
+  if (curSlide === maxSlide) {
+    curSlide = 0;
+  } else {
+    curSlide++;
+  }
+  goToSlide(curSlide);
+};
+
+const prevSlide = function () {
+  if (curSlide === 0) {
+    curSlide = maxSlide - 1;
+  } else {
+    curSlide--;
+  }
+  goToSlide(curSlide);
+};
+
+btnRight.addEventListener('click', nextSlide);
+btnLeft.addEventListener('click', prevSlide);
+
+// curSlide - 1: -100%,
 /////////////////////////////
 /////////////////////////////////////
 //////////////////////////////

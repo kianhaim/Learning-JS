@@ -235,8 +235,8 @@ const imgObserver = new IntersectionObserver(loadImg, {
 
 imgTarget.forEach(img => imgObserver.observe(img));
 
+///////////////////////////////////////
 // SLider
-
 const slider = function () {
   const slides = document.querySelectorAll('.slide');
   const btnLeft = document.querySelector('.slider__btn--left');
@@ -252,7 +252,7 @@ const slider = function () {
     slides.forEach(function (_, i) {
       dotContainer.insertAdjacentHTML(
         'beforeend',
-        `button class="dots__dot" data-slide="${i}"></button>`
+        `<button class="dots__dot" data-slide="${i}"></button>`
       );
     });
   };
@@ -269,14 +269,14 @@ const slider = function () {
 
   const goToSlide = function (slide) {
     slides.forEach(
-      (s, i) => (s.style.tranform = `translateX(${100 * (i - slide)}%)`)
+      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
     );
   };
 
   //Next slide
 
   const nextSlide = function () {
-    if (curSlide === maxSlide) {
+    if (curSlide === maxSlide - 1) {
       curSlide = 0;
     } else {
       curSlide++;
@@ -297,8 +297,8 @@ const slider = function () {
 
   /////Initalize
   const init = function () {
-    createDots();
     goToSlide(0);
+    createDots();
     activateDot(0);
   };
 
@@ -311,22 +311,18 @@ const slider = function () {
     //basic if statement
     if (e.key === 'ArrowLeft') prevSlide();
     // short circuting
-    e.key === 'ArrowRight' && nextSlide;
+    e.key === 'ArrowRight' && nextSlide();
   });
 
   dotContainer.addEventListener('click', function (e) {
     if (e.target.classList.contains('dots__dot')) {
-      const { slide } = e.target.dataset.slide;
+      const { slide } = e.target.dataset;
       goToSlide(slide);
       activateDot(slide);
     }
   });
 };
 slider();
-// curSlide - 1: -100%,
-/////////////////////////////
-/////////////////////////////////////
-//////////////////////////////
 
 // Selecting, Creating and Deleting Elements
 /*

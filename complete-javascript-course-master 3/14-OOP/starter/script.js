@@ -4,6 +4,10 @@ const Person = function (firstName, birthYear) {
   //Instance Properties
   this.firstName = firstName;
   this.birthYear = birthYear;
+  // Never do this (create a function on a contucture function)
+  // this.calcAge = function () {
+  //  console.log()
+  //}
 };
 
 // New {} is created

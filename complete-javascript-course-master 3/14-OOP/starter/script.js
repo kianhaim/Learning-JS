@@ -4,9 +4,9 @@ const Person = function (firstName, birthYear) {
   //Instance Properties
   this.firstName = firstName;
   this.birthYear = birthYear;
-  // Never do this (create a function on a contucture function)
+  // Never do this (create a function on a constructure function)
   // this.calcAge = function () {
-  //  console.log()
+  //  console.log(2037 - this.birthYear)
   //}
 };
 
@@ -23,3 +23,17 @@ console.log(matt);
 
 // True
 console.log(jonas instanceof Person);
+
+// Prototypes
+
+console.log(Person.prototype);
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+jonas.calcAge();
+matilda.calcAge();
+
+console.log(jonas.__proto__);
+console.log(jonas.__proto__ === Person.prototype);

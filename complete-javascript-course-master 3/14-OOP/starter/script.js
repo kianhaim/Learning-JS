@@ -37,3 +37,38 @@ matilda.calcAge();
 
 console.log(jonas.__proto__);
 console.log(jonas.__proto__ === Person.prototype);
+
+console.log(Person.prototype.isPrototypeOf(jonas));
+console.log(Person.prototype.isPrototypeOf(matilda));
+console.log(Person.prototype.isPrototypeOf(Person));
+// .prototypeOfLinkedObjects
+
+Person.prototype.species = 'Homo Sapiens';
+console.log(jonas.species, matilda.species);
+
+console.log(jonas.hasOwnProperty('firstName'));
+console.log(jonas.hasOwnProperty('species'));
+
+console.log(jonas.__proto__);
+// Object.prototype(top of prototype chain)
+
+console.log(jonas.__proto__.__proto__);
+console.log(jonas.__proto__.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor);
+
+const arr = [3, 4, 6, 6, 7, 8, 9, 9]; // New Array === []
+
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+console.log(arr.__proto__.__proto__);
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+const h1 = document.querySelector('h1');
+console.dir(x => x + 1);

@@ -130,7 +130,7 @@ class PersonCl {
     this.birthYear = birthYear;
     this.fullName = fullName;
   }
-
+  /// Instance Method
   // Method will be added to prototype property
 
   calcAge() {
@@ -155,6 +155,13 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  // Static Method
+
+  static hey() {
+    console.log('Hey there');
+    console.log(this);
+  }
 }
 
 const jessica = new PersonCl('Jessica Scott', 1996);
@@ -169,7 +176,7 @@ console.log(jessica.__proto__ === PersonCl.prototype);
 //   }
 
 jessica.greet();
-
+PersonCl.hey();
 // Classes are NOT HOISTED
 // CLASSES are first class Citizens
 // Classes are executed in strict Mode
@@ -195,3 +202,43 @@ console.log(account.latest);
 
 account.latest = 50;
 console.log(account.movements);
+
+///////////////Object.create////////////////
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+    return console.log(this.firstName, this.birthYear);
+  },
+};
+
+const steven = Object.create(PersonProto);
+
+console.log(steven);
+
+steven.name = 'Steven';
+steven.birthYear = 1990;
+steven.calcAge();
+console.log(steven.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah', 1993);
+sarah.calcAge();
+
+///////////////////////////////////////
+// Coding Challenge #2
+
+/* 
+1. Re-create challenge 1, but this time using an ES6 class;
+2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide by 1.6);
+3. Add a setter called 'speedUS' which sets the current speed in mi/h (but converts it to km/h before storing the value, by multiplying the input by 1.6);
+4. Create a new car and experiment with the accelerate and brake methods, and with the getter and setter.
+
+DATA CAR 1: 'Ford' going at 120 km/h
+
+GOOD LUCK 😀
+*/

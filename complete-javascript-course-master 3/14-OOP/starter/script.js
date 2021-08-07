@@ -266,15 +266,18 @@ class CarCl {
   }
 
   /// Set a Property tha already exists
-  set speedUS(speedUS) {
-    speed = this.speedUS * 1.6;
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
   }
 }
 
 const ford = new CarCl('Ford', 120);
 
 console.log(ford.speedUS);
-console.log(ford);
+ford.accelerate();
 ford.accelerate();
 ford.brake();
+
+ford.speedUS = 50;
+console.log(ford);
 console.log(ford.speedUS);

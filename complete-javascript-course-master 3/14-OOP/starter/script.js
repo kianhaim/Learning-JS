@@ -242,3 +242,39 @@ DATA CAR 1: 'Ford' going at 120 km/h
 
 GOOD LUCK 😀
 */
+class Accelerate {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+  accelerate() {
+    this.speed += 10;
+    console.log(
+      `The ${this.make} has a speed of ${this.speed} km/h when accelerating`
+    );
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(
+      `The ${this.make} has a speed of ${this.speed} km/h when braking`
+    );
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  /// Set a Property tha already exists
+  set speedUS(speedUS) {
+    console.log(speed);
+    speed = this.speedUS * 1.6;
+  }
+}
+
+const ford = new Accelerate('Ford', 120);
+console.log(ford);
+ford.accelerate();
+ford.brake();
+
+console.log(jessica.age);

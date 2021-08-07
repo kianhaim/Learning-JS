@@ -126,9 +126,9 @@ console.dir(x => x + 1);
 // class declaration
 
 class PersonCl {
-  constructor(firstName, birthYear) {
+  constructor(fullName, birthYear) {
     this.birthYear = birthYear;
-    this.firstName = firstName;
+    this.fullName = fullName;
   }
 
   // Method will be added to prototype property
@@ -138,13 +138,29 @@ class PersonCl {
   }
 
   greet() {
-    console.log(`Hey ${this.firstName}`);
+    console.log(`Hey ${this.fullName}`);
+  }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  /// Set a Property tha already exists
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
   }
 }
 
-const jessica = new PersonCl('Jessica', 1996);
+const jessica = new PersonCl('Jessica Scott', 1996);
 console.log(jessica);
 jessica.calcAge();
+console.log(jessica.age);
 
 console.log(jessica.__proto__ === PersonCl.prototype);
 
@@ -157,3 +173,25 @@ jessica.greet();
 // Classes are NOT HOISTED
 // CLASSES are first class Citizens
 // Classes are executed in strict Mode
+
+// Not a fullname
+// const walter = new PersonCl('Walter', 1965);
+//////////////////////////// Get and Set///////////////////////
+
+const account = {
+  owner: 'Jonas',
+  movements: [200, 530, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+console.log(account.latest);
+
+account.latest = 50;
+console.log(account.movements);

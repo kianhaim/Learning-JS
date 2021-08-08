@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 const Person = function (firstName, birthYear) {
   //Instance Properties
   this.firstName = firstName;
@@ -34,7 +34,7 @@ Person.prototype.calcAge = function () {
 // Coding Challenge #1
 // Coding Challenge #1
 
-/* 
+
 1. Use a constructor function to implement a Car. A car has a make and a speed property. The speed property is the current speed of the car in km/h;
 2. Implement an 'accelerate' method that will increase the car's speed by 10, and log the new speed to the console;
 3. Implement a 'brake' method that will decrease the car's speed by 5, and log the new speed to the console;
@@ -44,7 +44,7 @@ DATA CAR 1: 'BMW' going at 120 km/h
 DATA CAR 2: 'Mercedes' going at 95 km/h
 
 GOOD LUCK 😀
-*/
+
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -270,7 +270,6 @@ class CarCl {
     this.speed = speed * 1.6;
   }
 }
-
 const ford = new CarCl('Ford', 120);
 
 console.log(ford.speedUS);
@@ -281,3 +280,28 @@ ford.brake();
 ford.speedUS = 50;
 console.log(ford);
 console.log(ford.speedUS);
+
+///////////////////////////////////////// Prototype Inheritance
+
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.indroduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const mike = new Student('Mike', 2020, 'Computer Science');
+mike.indroduce();

@@ -124,6 +124,7 @@ console.dir(x => x + 1);
 //const PersonCl = class {}
 
 // class declaration
+*/
 
 class PersonCl {
   constructor(fullName, birthYear) {
@@ -163,6 +164,36 @@ class PersonCl {
     console.log(this);
   }
 }
+///////////////////////////////////
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    //Alwasys need to happen first
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  indroduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
+  }
+  calcAge() {
+    console.log(
+      `I'm ${
+        2037 - this.birthYear
+      } years old, but as a student I feel more like ${
+        2037 - this.birthYear + 10
+      }`
+    );
+  }
+}
+
+const martha = new StudentCl('Martha Jones', 2012, 'Computer Science');
+martha.indroduce();
+martha.calcAge();
+/*
+
+
+
+
 
 const jessica = new PersonCl('Jessica Scott', 1996);
 console.log(jessica);
@@ -332,30 +363,30 @@ DATA CAR 1: 'Tesla' going at 120 km/h, with a charge of 23%
 GOOD LUCK 😀
 */
 
-const CarCL = function (make, speed) {
+const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
 };
 const EV = function (make, speed, charge) {
-  CarCL.call(this, make, speed);
+  Car.call(this, make, speed);
   this.charge = charge;
 };
 
-CarCL.prototype.accelerate = function () {
+Car.prototype.accelerate = function () {
   this.speed += 10;
   console.log(
     `The ${this.make} has a speed of ${this.speed} km/h when accelerating`
   );
 };
 
-CarCL.prototype.brake = function () {
+Car.prototype.brake = function () {
   this.speed -= 5;
   console.log(
     `The ${this.make} has a speed of ${this.speed} km/h when braking`
   );
 };
 
-CarCL.prototype.brake = function () {
+Car.prototype.brake = function () {
   this.speed -= 5;
   console.log(
     `The ${this.make} has a speed of ${this.speed} km/h when braking`
@@ -363,7 +394,7 @@ CarCL.prototype.brake = function () {
 };
 // Link the Prototype of EV to CarCl.prototype
 
-EV.prototype = Object.create(CarCL.prototype);
+EV.prototype = Object.create(Car.prototype);
 
 EV.prototype.accelerate = function () {
   this.speed += 20;
@@ -396,3 +427,33 @@ tesla.chargeBattery(50);
 
 tesla.accelerate();
 tesla.accelerate();
+
+/////////////////////////////Inheritance between "class" using Object. Create //////////////////////
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+
+const StudentProto = Object.create(PersonProto);
+
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+StudentProto.indroduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const jay = Object.create(StudentProto);
+jay.init('Jay', 2010, 'Computer Science');
+jay.indroduce();
+jay.calcAge();

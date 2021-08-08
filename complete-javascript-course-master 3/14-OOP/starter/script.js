@@ -459,42 +459,69 @@ jay.indroduce();
 jay.calcAge();
 
 ///////////////////// Inheritance using Classes Examples//////////////
+// 1.) Public fields
+// 2.) Private fields
+// 3.) Public methods
+// 4.) Private methods
+// ( there is also the static version)
 
 class Account {
+  // 1. Public fields (instances)
+
+  local = navigator.language;
+
+  // 2. Private fields (instances)
+
+  #movements = [];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.local = navigator.language;
+    //this.local = navigator.language;
     // Protect Property
-    this._pin = pin;
-    this._movements = [];
+    this.#pin = pin;
+    //this._movements = [];
 
     //////////////////////////////
     console.log(`Thanks for Opening an Accoun, ${owner}`);
   }
-
-  ////PUBLIC INTERFACE of the OBJECT///
+  /// 3.) Public Methods
+  ////PUBLIC INTERFACE of the class///
   getMovement() {
-    return this._movements;
+    return this.#movements;
   }
 
   deposit(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
+    return this;
   }
+
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
   // Internal Method
-  /// Protected
-  _approveLoan(val) {
-    return true;
-  }
+
   //////////////////
   requestLoan(val) {
-    if (this.approveLoan(val)) {
+    if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Approved load of ${val}`);
+      return this;
     }
+  }
+
+  static help() {
+    console.log(`Help`);
+  }
+
+  // 4.) Private Method
+  /// Protected
+  // #approveLoan(val) {
+  //   return true;
+  _approveLoan(val) {
+    return true;
   }
 }
 
@@ -504,9 +531,17 @@ console.log(acc1);
 acc1.deposit(200);
 acc1.withdraw(150);
 acc1.requestLoan(1000);
-acc1.approveLoan(1000);
 
 console.log(acc1.getMovement());
-
 console.log(acc1);
-console.log(acc1.pin);
+
+//console.log(acc1.#pin);
+// Cant acces movements
+// console.log(acc1.#movements);
+//console.log(acc1.#approveLoan(100))
+
+////////////////////// Chaining Methods in object class;//////////////////////////
+
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+
+console.log(acc1.getMovement());

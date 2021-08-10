@@ -11,4 +11,4 @@ console.log('Importing Module');
 
 addToCart('bread', 5);
 
-console.log(price, totalQuantity);
+console.log(price, tq);

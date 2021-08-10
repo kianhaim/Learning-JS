@@ -627,3 +627,4 @@ class EVCl extends CarCl {
 const rivian = new EVCl('Rivian', 120, 23);
 
 rivian.accelerate().accelerate().chargeBattery(50).accelerate().brake().brake();
+console.log(rivian.speedUS);

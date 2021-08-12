@@ -1,8 +1,5 @@
 'use strict';
 
-// prettier-ignore
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
 const form = document.querySelector('.form');
 const containerWorkouts = document.querySelector('.workouts');
 const inputType = document.querySelector('.form__input--type');
@@ -21,6 +18,15 @@ class Workout {
     this.distance = distance; // in km
     this.duration = duration; // in mins
   }
+
+  _setDescription() {
+    // prettier-ignore
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    this.description = `${this.type[0].toUppercase()}${this.type.slice(1)} on ${
+      months[this.date.getMonth()]
+    } ${this.date.getDate}`;
+  }
 }
 
 ///////////// Running Class //////////////////
@@ -30,6 +36,7 @@ class Running extends Workout {
     super(coords, distance, duration);
     this.cadence = cadence;
     this.calcPace();
+    this._setDescription();
   }
 
   calcPace() {
@@ -46,6 +53,7 @@ class Cycling extends Workout {
     super(coords, distance, duration);
     this.elevationGain = elevationGain;
     this.calcSpeed();
+    this._setDescription();
   }
 
   calcSpeed() {
@@ -167,7 +175,7 @@ class App {
     this._renderWorkoutMarker(workout);
 
     // Render workout on list
-
+    this._renderWorkout(workout);
     /////// Clear input fields ///////////
     inputDistance.value =
       inputCadence.value =
@@ -188,8 +196,26 @@ class App {
           className: `${workout.type}-popup`,
         })
       )
-      .setPopupContent(`${workout.name} ${workout.date}`)
+      .setPopupContent(`${workout.type} ${workout.date}`)
       .openPopup();
+  }
+
+  _renderWorkout(workout) {
+    const html = `
+    <li class="workout workout--${workout.type}" data-id="${workout.id}">
+      <h2 class="workout__title">${workout.description}</h2>
+      <div class="workout__details">
+        <span class="workout__icon">${
+          workout.type === 'runnning' ? '🏃‍♂️' : '🚴‍♀️'
+        }</span>
+        <span class="workout__value">${workout.distance}</span>
+        <span class="workout__unit">km</span>
+      </div>
+      <div class="workout__details">
+        <span class="workout__icon">⏱</span>
+        <span class="workout__value">${workout.duration}</span>
+        <span class="workout__unit">min</span>
+      </div>`;
   }
 }
 

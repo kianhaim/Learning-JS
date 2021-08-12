@@ -30,24 +30,29 @@ navigator.geolocation.getCurrentPosition(
       inputDistance.focus();
 
       //console.log(mapEvent);
-      //   const { lat, lng } = mapEvent.latlng;
-
-      //   L.marker([lat, lng])
-      //     .addTo(map)
-      //     .bindPopup(
-      //       L.popup({
-      //         maxWidth: 250,
-      //         minWidth: 100,
-      //         autoClose: false,
-      //         closeOnClick: false,
-      //         className: 'running-popup',
-      //       })
-      //     )
-      //     .setPopupContent('Workout')
-      //     .openPopup();
     });
   },
   function () {
     alert(`Could not get your position.`);
   }
 );
+/////////////////////
+
+form.addEventListener('submit', function () {
+  //Display the marker
+  const { lat, lng } = mapEvent.latlng;
+
+  L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup(
+      L.popup({
+        maxWidth: 250,
+        minWidth: 100,
+        autoClose: false,
+        closeOnClick: false,
+        className: 'running-popup',
+      })
+    )
+    .setPopupContent('Workout')
+    .openPopup();
+});

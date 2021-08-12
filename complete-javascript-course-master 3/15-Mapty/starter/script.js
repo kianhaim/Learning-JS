@@ -42,6 +42,12 @@ navigator.geolocation.getCurrentPosition(
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
+  /////// Clear input fields ///////////
+  inputDistance.value =
+    inputCadence.value =
+    inputDuration.value =
+    inputElevation.value =
+      '';
   /////// Display the marker  /////////////////
   const { lat, lng } = mapEvent.latlng;
 

@@ -23,7 +23,7 @@ class App {
 
     form.addEventListener('submit', this._newWorkout.bind(this));
 
-    inputType.addEventListener('change', this._toggleElevationField.bind(this));
+    inputType.addEventListener('change', this._toggleElevationField);
   }
 
   _getPosition() {

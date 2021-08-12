@@ -90,7 +90,8 @@ class App {
 
     /// Get data from Local Storage
 
-    this._setLocalStorage();
+    this._getLocalStorage();
+
     // Attach Event Handlers
     form.addEventListener('submit', this._newWorkout.bind(this));
 
@@ -125,6 +126,11 @@ class App {
     }).addTo(this.#map);
     ////////////   Handling clicks on Map ////////////////////
     this.#map.on('click', this._showForm.bind(this));
+
+    // Render the Markers
+    this.#workouts.forEach(work => {
+      this._renderWorkoutMarker(work);
+    });
   }
 
   _showForm(mapE) {
@@ -302,6 +308,13 @@ class App {
     console.log(data);
 
     if (!data) return;
+    /// Restoring the data on the #Workouts
+
+    this.#workouts = data;
+
+    this.#workouts.forEach(work => {
+      this._renderWorkout(work);
+    });
   }
 }
 

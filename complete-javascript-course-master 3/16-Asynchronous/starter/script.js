@@ -9,7 +9,8 @@ const getCountryData = function (country) {
   request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
   request.send();
   request.addEventListener('load', function () {
-    console.log(this.responseText);
+    //JSON
+    //console.log(this.responseText);
 
     const [data] = JSON.parse(this.responseText);
     console.log(data);

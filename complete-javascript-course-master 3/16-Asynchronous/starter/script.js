@@ -5,7 +5,7 @@ const countriesContainer = document.querySelector('.countries');
 
 const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
-  countriesContainer.style.opacity = 1;
+  //countriesContainer.style.opacity = 1;
 };
 
 const renderCountry = function (data, className = '') {
@@ -27,7 +27,7 @@ const renderCountry = function (data, className = '') {
                          </article>`;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
+  //countriesContainer.style.opacity = 1;
 };
 ///////////////////////////////////////
 /*
@@ -155,6 +155,9 @@ const getCountryData = function (country) {
     .catch(err => {
       console.error(`${err} ❤️`);
       renderError(`Something went wrong: ${err.message}. Try Again`);
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
     });
 };
 

@@ -104,11 +104,14 @@ getCountryandNeighbour('philippines');
 getCountryandNeighbour('usa');
 */
 
-/// OLD fashion AJAX
+/// OLD fashion AJAX call with XMLHttpRequest
 
 // const getCountry = function (country) {
 //     const request = new XMLHttpRequest();
 //     request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
 //     request.send();
 
-///////////////////////// Promises///////////////////////
+/////////////////////////    Promises         ///////////////////////
+
+const request = fetch(`https://restcountries.eu/rest/v2/name/usa`);
+console.log(request);

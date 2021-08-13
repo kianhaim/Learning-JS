@@ -69,11 +69,11 @@ class Cycling extends Workout {
 }
 
 ////// Examples /////////
-const run1 = new Running([39, -12], 5.2, 24, 178);
-const cycle1 = new Cycling([39, -12], 5.2, 24, 178);
+// const run1 = new Running([39, -12], 5.2, 24, 178);
+// const cycle1 = new Cycling([39, -12], 5.2, 24, 178);
 
-console.log(cycle1);
-console.log(run1);
+// console.log(cycle1);
+// console.log(run1);
 
 /////////////////////////////////// Application Architecture Class //////////////////////////////////
 class App {
@@ -232,7 +232,7 @@ class App {
         })
       )
       .setPopupContent(
-        `${workout.type === 'runnning' ? '🏃‍♂️' : '🚴‍♀️'} ${workout.description}`
+        `${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${workout.description}`
       )
       .openPopup();
   }
@@ -296,7 +296,7 @@ class App {
     });
 
     // Using the Public Interface
-    workout.click();
+    // workout.click();
   }
   // Set local Storage
   _setLocalStorage() {
@@ -305,7 +305,7 @@ class App {
 
   _getLocalStorage() {
     const data = JSON.parse(localStorage.getItem('workouts'));
-    console.log(data);
+    //console.log(data);
 
     if (!data) return;
     /// Restoring the data on the #Workouts
@@ -315,6 +315,11 @@ class App {
     this.#workouts.forEach(work => {
       this._renderWorkout(work);
     });
+  }
+
+  reset() {
+    localStorage.removeItem('workouts');
+    location.reload();
   }
 }
 

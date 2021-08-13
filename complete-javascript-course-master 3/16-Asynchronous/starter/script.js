@@ -6,6 +6,8 @@ const countriesContainer = document.querySelector('.countries');
 ///////////////////////////////////////
 /*
 
+/////////// FIRST AJAX XMLHTttpRequest
+
 const getCountry = function (country) {
   const request = new XMLHttpRequest();
   request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
@@ -43,7 +45,7 @@ getCountry('philippines');
 getCountry('usa');
 
 */
-
+/*
 /////////////////////////
 const renderCountry = function (data, className = '') {
   const html = `<article class="country ${className}">
@@ -100,3 +102,13 @@ const getCountryandNeighbour = function (country) {
 
 getCountryandNeighbour('philippines');
 getCountryandNeighbour('usa');
+*/
+
+/// OLD fashion AJAX
+
+// const getCountry = function (country) {
+//     const request = new XMLHttpRequest();
+//     request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
+//     request.send();
+
+///////////////////////// Promises///////////////////////

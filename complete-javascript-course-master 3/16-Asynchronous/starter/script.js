@@ -45,7 +45,7 @@ getCountry('philippines');
 getCountry('usa');
 
 */
-/*
+
 /////////////////////////
 const renderCountry = function (data, className = '') {
   const html = `<article class="country ${className}">
@@ -68,7 +68,7 @@ const renderCountry = function (data, className = '') {
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
 };
-
+/*
 const getCountryandNeighbour = function (country) {
   const request = new XMLHttpRequest();
   request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
@@ -115,3 +115,16 @@ getCountryandNeighbour('usa');
 
 const request = fetch(`https://restcountries.eu/rest/v2/name/usa`);
 console.log(request);
+
+const getCountryData = function (country) {
+  fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+    .then(function (response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+};
+
+getCountryData('usa');

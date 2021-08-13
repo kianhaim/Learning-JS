@@ -138,12 +138,16 @@ const getCountryData = function (country) {
     .then(data => {
       renderCountry(data[0]);
       const neighbour = data[0].borders[0];
-      //// Country 2
+
       if (!neighbour) return;
+
+      //// Country 2
       return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
     })
     .then(response => response.json())
     .then(data => renderCountry(data, 'neighbour'));
 };
 
-getCountryData('usa');
+btn.addEventListener('click', function () {
+  getCountryData('usa');
+});

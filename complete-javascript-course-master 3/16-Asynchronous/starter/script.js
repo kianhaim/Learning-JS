@@ -237,12 +237,13 @@ GOOD LUCK 😀
 const whereAmI = function (lat, lng) {
   fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
     .then(response => {
-      if (!response.ok) throw new Error(`Limitations applied`);
+      if (!response.ok)
+        throw new Error(`Limitations applied - ${response.status}`);
       return response.json();
     })
     .then(data => {
       getCountryData(data.country);
-      console.log(data);
+      // console.log(data);
       console.log(`You are in ${data.city}, ${data.country}`);
     })
     .catch(err => {
@@ -251,5 +252,7 @@ const whereAmI = function (lat, lng) {
 };
 
 btn.addEventListener('click', function () {
+  whereAmI(52.508, 13.381);
+  whereAmI(19.037, 72.873);
   whereAmI(-33.933, 18.474);
 });

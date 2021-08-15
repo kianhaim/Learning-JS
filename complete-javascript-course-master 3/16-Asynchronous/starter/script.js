@@ -233,7 +233,7 @@ GOOD LUCK 😀
 */
 
 ////// ANSWER //////
-
+/*
 const whereAmI = function (lat, lng) {
   fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
     .then(response => {
@@ -264,3 +264,10 @@ btn.addEventListener('click', function () {
   whereAmI(19.037, 72.873);
   whereAmI(-33.933, 18.474);
 });
+
+*/
+
+console.log('Test Start');
+setTimeout(() => console.log('0 sec timer'), 0);
+Promise.resolve('Resolve promise 1').then(res => console.log(res));
+console.log('Test end');

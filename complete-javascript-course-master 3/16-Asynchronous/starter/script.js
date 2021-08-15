@@ -172,7 +172,7 @@ btn.addEventListener('click', function () {
   getCountryData('usa');
 });
 //////////////////////////////////////////// with Helper Function//////////////////
-*/
+
 const getJSON = function (url, errorMsg = 'Something went wrong') {
   return fetch(url).then(response => {
     // console.log(response);
@@ -242,12 +242,20 @@ const whereAmI = function (lat, lng) {
       return response.json();
     })
     .then(data => {
-      getCountryData(data.country);
       // console.log(data);
       console.log(`You are in ${data.city}, ${data.country}`);
+
+      return fetch(`https://restcountries.eu/rest/v2/name/${data.country}`);
     })
-    .catch(err => {
-      console.error(`${err}(Try Again)`);
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Country not found (${response.status})`);
+      return response.json();
+    })
+    .then(data => renderCountry(data[0]))
+    .catch(err => console.error(`${err.message}(Try Again)`))
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
     });
 };
 

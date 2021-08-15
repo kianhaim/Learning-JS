@@ -174,7 +174,7 @@ btn.addEventListener('click', function () {
 */
 
 const getJSON = function (url, errorMsg = 'Something went wrong') {
-  fetch(url).then(response => {
+  return fetch(url).then(response => {
     if (!response.ok) throw new Error(`${errorMsg}:(${response.status})`);
     return response.json();
   });
@@ -183,7 +183,7 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
 const getCountryData = function (country) {
   getJSON(
     `https://restcountries.eu/rest/v2/name/${country}`,
-    `Country not found`
+    'Country not found'
   )
     .then(data => {
       renderCountry(data[0]);

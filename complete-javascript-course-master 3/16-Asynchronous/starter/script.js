@@ -586,6 +586,7 @@ Promise.race([
   .catch(err => console.error(err));
 
 ///////////////// Promise.allsettled ////////////////////////
+// Return all promises in a Array form
 
 Promise.allSettled([
   Promise.resolve('Success'),
@@ -594,7 +595,18 @@ Promise.allSettled([
 ]).then(res => console.log(res));
 
 ///////////////// Promise.all //////////////////////////
+// Short circuits the promises withe one is rejected it well return error
 Promise.all([
+  Promise.resolve('Success'),
+  Promise.reject('Error'),
+  Promise.resolve('anotherSuccess'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
+
+/////////////// Promise.any ////////////////////////////
+// Returns the first resolve promise
+Promise.any([
   Promise.resolve('Success'),
   Promise.reject('Error'),
   Promise.resolve('anotherSuccess'),

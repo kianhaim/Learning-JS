@@ -556,3 +556,31 @@ const get3Countries = async function (c1, c2, c3) {
 };
 
 get3Countries('usa', 'philippines', 'japan');
+
+////////////// Promise.race ////////////////////
+
+(async function () {
+  const res = await Promise.race([
+    getJSON(`https://restcountries.eu/rest/v2/name/italy`),
+    getJSON(`https://restcountries.eu/rest/v2/name/usa`),
+    getJSON(`https://restcountries.eu/rest/v2/name/japan`),
+  ]);
+  console.log(res[0]);
+
+  //calling the function ()
+})();
+
+const timeOut = function (sec) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error('Request took too long!'));
+    }, sec * 1000);
+  });
+};
+
+Promise.race([
+  getJSON(`https://restcountries.eu/rest/v2/name/canada`),
+  timeOut(5),
+])
+  .then(res => console.log(res[0]))
+  .catch(err => console.error(err));

@@ -451,3 +451,15 @@ createImage('img/img-1.jpg')
     return wait(2);
   })
   .catch(err => console.error(err));
+
+/////////////////////// Async & Await /////////////////
+
+const whereAmI = async function (country) {
+  const res = await fetch(`https://restcountries.eu/rest/v2/name/${country}`);
+  console.log(res);
+  /// the same as the then
+  fetch(`https://restcountries.eu/rest/v2/name/${country}`);
+};
+
+whereAmI('usa');
+console.log('First');

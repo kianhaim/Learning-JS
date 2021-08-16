@@ -402,13 +402,19 @@ GOOD LUCK 😀
 
 //////////////// Answer ////////////////////
 
-var imageContainer = document.querySelector('.images');
+const imageContainer = document.querySelector('.images');
 
 const createImage = function (imgPath) {
   return new Promise(function (resolve, reject) {
     const img = document.createImage('img');
     img.src = imagPath;
 
-    img.Evet;
+    img.addEventListener('load', function () {
+      imageContainer.append(img);
+      resolve(img);
+    });
+    img.addEventListener('error', function () {
+      reject(new Error('Image not found'));
+    });
   });
 };

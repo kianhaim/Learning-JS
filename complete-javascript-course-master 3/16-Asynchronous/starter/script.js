@@ -375,7 +375,6 @@ const whereAmI = function () {
 
 btn.addEventListener('click', whereAmI);
 */
-
 // Coding Challenge #2
 
 /* 
@@ -398,7 +397,7 @@ PART 2
 TEST DATA: Images in the img folder. Test the error handler by passing a wrong image path. Set the network speed to 'Fast 3G' in the dev tools Network tab, otherwise images load too fast.
 
 GOOD LUCK 😀
-*/
+
 
 //////////////// Answer ////////////////////
 
@@ -451,8 +450,18 @@ createImage('img/img-1.jpg')
     return wait(2);
   })
   .catch(err => console.error(err));
+*/
 
 /////////////////////// Async & Await /////////////////
+///////////////////////////////////////
+// Consuming Promises with Async/Await
+// Error Handling With try...catch
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
 
 const whereAmI = async function (country) {
   /// the same as the then
@@ -463,8 +472,9 @@ const whereAmI = async function (country) {
   const res = await fetch(`https://restcountries.eu/rest/v2/name/${country}`);
   const data = await res.json();
   console.log(data);
-  renderCountry(data);
+  renderCountry(data[0]);
 };
 
-whereAmI('usa');
-console.log('First');
+btn.addEventListener('click', function () {
+  whereAmI('usa');
+});

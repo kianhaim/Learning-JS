@@ -293,7 +293,7 @@ const lotteryPromise = new Promise(function (resolve, reject) {
   }, 2000);
 });
 
-lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 
 ////////////////// Promisifying setTimeout
 
@@ -305,7 +305,22 @@ const wait = function (seconds) {
 
 wait(2)
   .then(() => {
+    console.log('I waited for 1 second');
+    return wait(1);
+  })
+  .then(() => {
     console.log('I waited for 2 seconds');
     return wait(1);
   })
-  .then(() => console.log('I waited for 1 second'));
+  .then(() => {
+    console.log('I waited for 3 seconds');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('I waited for 4 seconds');
+    return wait(1);
+  })
+  .then(() => console.log('I waited for 5 seconds'));
+
+Promise.resolve('abc').then(x => console.log(x));
+Promise.reject('abc').catch(x => console.error(x));

@@ -283,11 +283,14 @@ console.log('Test end');
 /////////////////// Making Promises ////////////////////////
 
 const lotteryPromise = new Promise(function (resolve, reject) {
-  if (Math.random() >= 0.5) {
-    resolve('You win the Lottery');
-  } else {
-    reject('You lost your money');
-  }
+  console.log('Lottery Draw is Happening');
+  setTimeout(function () {
+    if (Math.random() >= 0.5) {
+      resolve('You win the Lottery');
+    } else {
+      reject('You lost your money');
+    }
+  }, 2000);
 });
 
 lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));

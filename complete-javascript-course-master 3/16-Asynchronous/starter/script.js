@@ -343,8 +343,13 @@ const getPosition = function () {
 
 getPosition().then(pos => console.log(pos));
 
-const whereAmI = function (lat, lng) {
-  fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+const whereAmI = function () {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+
+      return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    })
     .then(response => {
       if (!response.ok)
         throw new Error(`Limitations applied - ${response.status}`);
@@ -367,3 +372,5 @@ const whereAmI = function (lat, lng) {
       countriesContainer.style.opacity = 1;
     });
 };
+
+btn.addEventListener('click', whereAmI);

@@ -458,7 +458,9 @@ const whereAmI = async function (country) {
   const res = await fetch(`https://restcountries.eu/rest/v2/name/${country}`);
   console.log(res);
   /// the same as the then
-  fetch(`https://restcountries.eu/rest/v2/name/${country}`);
+  fetch(`https://restcountries.eu/rest/v2/name/${country}`).then(res =>
+    console.log(res)
+  );
 };
 
 whereAmI('usa');

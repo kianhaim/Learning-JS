@@ -279,3 +279,13 @@ Promise.resolve('Resolved promise 2').then(res => {
 
 console.log('Test end');
 */
+
+/////////////////// Making Promises ////////////////////////
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  if (Math.random() >= 0.5) {
+    resolve('You win the Lottery');
+  } else {
+    reject('You lost your money');
+  }
+});

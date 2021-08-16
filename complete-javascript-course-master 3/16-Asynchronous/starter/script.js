@@ -497,14 +497,20 @@ const whereAmI = async function () {
   } catch (err) {
     console.error(`${err} 😭`);
     renderError(`😥${err.message}`);
+
+    // Reject Promise returned from async function
+
+    throw err;
   }
 };
 
 btn.addEventListener('click', function () {
-  console.log('1 check');
+  console.log('1. Will get location');
   // const city = whereAmI();
   // console.log(city);
 
-  whereAmI().then(city => console.log(city));
-  console.log('3 check');
+  whereAmI()
+    .then(city => console.log(`2. ${city}`))
+    .catch(err => console.error(`2. ${err.message}`))
+    .finally(() => console.log('3. Finish Getting Location'));
 });

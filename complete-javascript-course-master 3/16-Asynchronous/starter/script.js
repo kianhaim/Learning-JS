@@ -478,9 +478,10 @@ const whereAmI = async function () {
 
     // Reverse geocoding
     const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+
     if (!resGeo.ok) throw new Error(`Problem getting location data`);
     const dataGeo = await resGeo.json();
-    console.log(dataGeo);
+    //console.log(dataGeo);
 
     // Country data
     const res = await fetch(
@@ -488,14 +489,22 @@ const whereAmI = async function () {
     );
     if (!resGeo.ok) throw new Error(`Problem getting country`);
     const data = await res.json();
-    console.log(data);
+    //console.log(data);
     renderCountry(data[0]);
+
+    //return console.log(`You are in ${dataGeo.city}, ${dataGeo.country}`);
+    return `You are in ${dataGeo.city}, ${dataGeo.country}`;
   } catch (err) {
     console.error(`${err} 😭`);
-    renderError(`Something went wrong 😥${err.message}`);
+    renderError(`😥${err.message}`);
   }
 };
 
 btn.addEventListener('click', function () {
-  whereAmI();
+  console.log('1 check');
+  // const city = whereAmI();
+  // console.log(city);
+
+  whereAmI().then(city => console.log(city));
+  console.log('3 check');
 });

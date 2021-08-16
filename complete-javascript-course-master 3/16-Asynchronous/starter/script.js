@@ -463,7 +463,7 @@ createImage('img/img-1.jpg')
 ///////////////////////////////////////
 // Consuming Promises with Async/Await
 // Error Handling With try...catch
-
+/*
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -525,3 +525,33 @@ btn.addEventListener('click', function () {
     console.log('3. Finish Getting Location');
   })();
 });
+
+*/
+
+///////////////////////////// Running Promises in Parallel //////////////
+
+const get3Countries = async function (c1, c2, c3) {
+  try {
+    // const [data1] = await getJSON(
+    //   `https://restcountries.eu/rest/v2/name/${c1}`
+    // );
+    // const [data2] = await getJSON(
+    //   `https://restcountries.eu/rest/v2/name/${c2}`
+    // );
+    // const [data3] = await getJSON(
+    //   `https://restcountries.eu/rest/v2/name/${c3}`
+    // );
+    // console.log([data1.capital, data2.capital, data2.capital]);
+    // Running all promises at the same time
+
+    Promise.all([
+      getJSON(`https://restcountries.eu/rest/v2/name/${c1}`),
+      getJSON(`https://restcountries.eu/rest/v2/name/${c2}`),
+      getJSON(`https://restcountries.eu/rest/v2/name/${c3}`),
+    ]);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+get3Countries('usa', 'philippines', 'japan');

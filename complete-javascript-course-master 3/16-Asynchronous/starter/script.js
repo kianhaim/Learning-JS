@@ -279,7 +279,7 @@ Promise.resolve('Resolved promise 2').then(res => {
 
 console.log('Test end');
 */
-
+/*
 /////////////////// Making Promises ////////////////////////
 
 const lotteryPromise = new Promise(function (resolve, reject) {
@@ -324,3 +324,19 @@ wait(2)
 
 Promise.resolve('abc').then(x => console.log(x));
 Promise.reject('abc').catch(x => console.error(x));
+
+
+*/
+
+//////////////////////////
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject(err)
+    // );
+
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};

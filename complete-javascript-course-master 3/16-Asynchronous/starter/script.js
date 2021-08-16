@@ -542,13 +542,14 @@ const get3Countries = async function (c1, c2, c3) {
     //   `https://restcountries.eu/rest/v2/name/${c3}`
     // );
     // console.log([data1.capital, data2.capital, data2.capital]);
-    // Running all promises at the same time
 
-    Promise.all([
+    // Running all promises at the same time  - Promise.all (combinator)
+    const data = await Promise.all([
       getJSON(`https://restcountries.eu/rest/v2/name/${c1}`),
       getJSON(`https://restcountries.eu/rest/v2/name/${c2}`),
       getJSON(`https://restcountries.eu/rest/v2/name/${c3}`),
     ]);
+    console.log(data.map(country => country[0].capital));
   } catch (err) {
     console.error(err);
   }

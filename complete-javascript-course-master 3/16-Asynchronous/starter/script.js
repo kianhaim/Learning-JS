@@ -455,12 +455,15 @@ createImage('img/img-1.jpg')
 /////////////////////// Async & Await /////////////////
 
 const whereAmI = async function (country) {
-  const res = await fetch(`https://restcountries.eu/rest/v2/name/${country}`);
-  console.log(res);
   /// the same as the then
-  fetch(`https://restcountries.eu/rest/v2/name/${country}`).then(res =>
-    console.log(res)
-  );
+  // fetch(`https://restcountries.eu/rest/v2/name/${country}`).then(res =>
+  //   console.log(res)
+  // );
+
+  const res = await fetch(`https://restcountries.eu/rest/v2/name/${country}`);
+  const data = await res.json();
+  console.log(data);
+  renderCountry(data);
 };
 
 whereAmI('usa');

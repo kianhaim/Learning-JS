@@ -12,7 +12,3 @@ console.log('Importing Module');
 addToCart('bread', 5);
 
 console.log(price, tq);
-
-const lowCart = function (low, high) {
-  console.log(low, high);
-};

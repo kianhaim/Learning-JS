@@ -7,8 +7,8 @@ import {
   totalQuantity,
 } from './shoppingCart.js';
 
-console.log('Importing Module');
+// console.log('Importing Module');
 
-addToCart('bread', 5);
+// addToCart('bread', 5);
 
-console.log(price, tq);
+// console.log(price, tq);

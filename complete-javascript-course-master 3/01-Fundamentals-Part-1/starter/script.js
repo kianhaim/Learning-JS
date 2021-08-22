@@ -1,5 +1,4 @@
 /*
-
 Mark and John are trying to compare their BMI (Body Mass Index), which is calculated using the formula: BMI = mass / height ** 2 = mass / (height * height). (mass in kg and height in meter).
 
 1. Store Mark's and John's mass and height in variables
@@ -12,8 +11,7 @@ TEST DATA 2: Marks weights 95 kg and is 1.88 m tall. John weights 85 kg and is 1
 GOOD LUCK 😀
 
 //MY ANSWER
-
-/*
+*/
 
 const markMass = 79;
 const markHeight = 1.69;
@@ -34,14 +32,13 @@ let markHigherBMI = markBMI > johnBMI;
 
 console.log(markBMI, johnBMI, markHigherBMI);
 
-
-const firstName = "Jonas";
-const job = "teacher";
+const firstName = 'Jonas';
+const job = 'teacher';
 const birthYear = 1991;
 const year = 2037;
 
 const jonas =
-  "I'm " + firstName + ", a " + (year - birthYear) + " year old " + job + "!";
+  "I'm " + firstName + ', a ' + (year - birthYear) + ' year old ' + job + '!';
 
 console.log(jonas);
 const jonasNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
@@ -50,7 +47,7 @@ console.log(jonasNew);
 
 console.log(`Just a regular string..`);
 
-console.log("String with \n multiple \n line");
+console.log('String with \n multiple \n line');
 
 console.log(`String with
 multiple
@@ -59,13 +56,13 @@ lines`);
 const birthYear = 1990;
 let century;
 if (birthYear <= 2000) {
-    century = 20;
+  century = 20;
 } else {
-    century = 21;
+  century = 21;
 }
 console.log(century);
 
-
+/*
 
 Mark and John are trying to compare their BMI (Body Mass Index), which is calculated using the formula: BMI = mass / height ** 2 = mass / (height * height). (mass in kg and height in meter).
 
@@ -75,7 +72,7 @@ Mark and John are trying to compare their BMI (Body Mass Index), which is calcul
 
 TEST DATA 1: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
 TEST DATA 2: Marks weights 95 kg and is 1.88 m tall. John weights 85 kg and is 1.76 m tall.
-
+*/
 
 const massMark = 78;
 const massJohn = 92;
@@ -98,26 +95,25 @@ if (BMIMark > BMIJohn) {
 
 // type conversion
 
-const inputYear = "1991";
+const inputYear = '1991';
 console.log(Number(inputYear), inputYear);
 console.log(Number(inputYear) + 18);
 
-console.loh(Number("Jonas"));
+console.loh(Number('Jonas'));
 console.log(typeof NaN);
 
 console.log(String(23), 23);
 
 // Type Coersion
 
-console.log("I am " + 23 + " years old");
-console.log("23" - "10" - 3);
-console.log("23" / "2");
-console.log("23" > "18");
+console.log('I am ' + 23 + ' years old');
+console.log('23' - '10' - 3);
+console.log('23' / '2');
+console.log('23' > '18');
 
-let n = "1" + 1; // '11'
+let n = '1' + 1; // '11'
 n = n - 1; // 11 - 1
 console.log(n); // 10
-
 
 const hasDriversLicense = true; // A
 const hasGoodVision = true; // B
@@ -140,7 +136,6 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 } else {
   console.log('Someone else should drive...');
 }
-*/
 
 // Coding Challenge #3
 
@@ -159,7 +154,7 @@ TEST DATA BONUS 2: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 106
 
 GOOD LUCK 😀
 
-
+*/
 // const averageDolphins = (96 + 108 + 89) / 3;
 // const averageKoalas = (88 + 91 + 110) / 3;
 // console.log(averageDolphins, averageKoalas);
@@ -198,70 +193,66 @@ if (averageDolphins > averageKoalas && averageDolphins >= 100) {
   console.log(`No one wins the competition!`);
 }
 
-
 //SWITCH STATEMENT
 
-const day = "saturday";
+const day = 'saturday';
 
 switch (day) {
-  case "monday":
+  case 'monday':
     console.log(`Plan course structure`);
     console.log(`Go to coding meetup`);
     break;
-  case "tuesday":
+  case 'tuesday':
     console.log(`Prepar Theory videos`);
     break;
-  case "wednesday":
-  case "thursday":
+  case 'wednesday':
+  case 'thursday':
     console.log(`Write theory videos`);
     break;
-  case "friday":
+  case 'friday':
     console.log(`Record videos`);
     break;
-  case "saturday":
-  case "sunday":
+  case 'saturday':
+  case 'sunday':
     console.log(`Enjoy the weekend!`);
     break;
   default:
     console.log(`Not a valid day!`);
 }
 
-if (day === "monday") {
+if (day === 'monday') {
   console.log(`Plan course structure`);
   console.log(`Go to coding meetup`);
-} else if (day === "tuesday") {
+} else if (day === 'tuesday') {
   console.log(`Prepar Theory videos`);
-} else if (day === "wednesday" || day === "thurday") {
+} else if (day === 'wednesday' || day === 'thurday') {
   console.log(`Write theory videos`);
-} else if (day === "friday") {
+} else if (day === 'friday') {
   console.log(`Record videos`);
-} else if (day === "saturday" || day === "sunday") {
+} else if (day === 'saturday' || day === 'sunday') {
   console.log(`Enjoy the weekend!`);
 } else {
   console.log(`Not a valid day!`);
 }
 
-
-
 // Conditional Ternary Operator
 
 const age = 23;
 
-const drink = age >= 18 ? "wine" : "water";
+const drink = age >= 18 ? 'wine' : 'water';
 console.log(drink);
 
 //if statement
 let drink2;
 if (age >= 18) {
-  drink2 = "wine";
+  drink2 = 'wine';
 } else {
-  drink2 = "water";
+  drink2 = 'water';
 }
 console.log(drink2);
-console.log(`I like to drink ${age >= 18 ? "wine" : "water"}`);
+console.log(`I like to drink ${age >= 18 ? 'wine' : 'water'}`);
 
 // Coding Challenge #4
-
 
 // Steven wants to build a very simple tip calculator for whenever he goes eating in a resturant. In his country, it's usual to tip 15% if the bill value is between 50 and 300. If the value is different, the tip is 20%.
 
@@ -274,7 +265,6 @@ console.log(`I like to drink ${age >= 18 ? "wine" : "water"}`);
 // HINT: Value X is between 50 and 300, if it's >= 50 && <= 300 😉
 
 // GOOD LUCK 😀
-*/
 
 const bill = 430;
 const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;

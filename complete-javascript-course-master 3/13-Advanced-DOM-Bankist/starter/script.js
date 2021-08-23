@@ -506,7 +506,7 @@ console.log(h1.parentElement);
 
 h1.closest('h1').style.background = 'var(--gradient-primary)';
 
-Going sideways : Siblings
+//Going sideways : Siblings
 
 console.log(h1.previousElementSibling);
 console.log(h1.nextElementSibling);

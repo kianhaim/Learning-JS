@@ -467,6 +467,7 @@ function _typeof(obj) {
 }
 var _shoppingCart = _interopRequireWildcard(require("./shoppingCart.js"));
 var _lodashEs = _interopRequireDefault(require("lodash-es"));
+var _Jonas;
 function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
         default: obj
@@ -605,6 +606,13 @@ var Person = function Person1(name) {
     console.log("".concat(this.greeting, ", ").concat(this.name));
 };
 var jonas = new Person('Jonas');
+console.log((_Jonas = 'Jonas', _Jonas !== void 0) ? _Jonas : null);
+console.log(_shoppingCart.cart.find(function(el) {
+    return el.quantity >= 2;
+}));
+Promise.resolve('Test').then(function(x) {
+    return console.log(x);
+});
 
 },{"./shoppingCart.js":"ef2K7","lodash-es":"gRGYu"}],"ef2K7":[function(require,module,exports) {
 "use strict";

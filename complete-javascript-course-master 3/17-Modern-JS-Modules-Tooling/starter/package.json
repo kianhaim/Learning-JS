@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "browserslist": [
-    "last 1 Chrome versions"
+    "defaults"
   ],
-  "main": "script.js",
+  "default": "script.js",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html"
@@ -14,9 +14,11 @@
   "license": "ISC",
   "dependencies": {
     "leaflet": "^1.7.1",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "parcel": "^2.0.0-rc.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "npm": "^7.21.0",
     "parcel-bundler": "^1.12.5"

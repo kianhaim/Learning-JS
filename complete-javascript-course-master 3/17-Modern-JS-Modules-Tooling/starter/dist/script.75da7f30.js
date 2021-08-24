@@ -127,30 +127,30 @@ exports.default = _default;
 exports.tq = exports.totalPrice = exports.addToCart = exports.cart = void 0;
 // Exporting module
 console.log('Exporting module');
-const shippingCost = 10;
-const cart = [];
+var shippingCost = 10;
+var cart = [];
 exports.cart = cart;
 
-const addToCart = function (product, quantity) {
+var addToCart = function addToCart(product, quantity) {
   cart.push({
-    product,
-    quantity
+    product: product,
+    quantity: quantity
   });
-  console.log(`${quantity} ${product} added to cart`);
+  console.log("".concat(quantity, " ").concat(product, " added to cart"));
 };
 
 exports.addToCart = addToCart;
-const totalPrice = 237;
+var totalPrice = 237;
 exports.totalPrice = totalPrice;
-const totalQuantity = 23;
+var totalQuantity = 23;
 exports.tq = totalQuantity;
 
 function _default(product, quantity) {
   cart.push({
-    product,
-    quantity
+    product: product,
+    quantity: quantity
   });
-  console.log(`${quantity} ${product} added to cart`);
+  console.log("".concat(quantity, " ").concat(product, " added to cart"));
 }
 },{}],"node_modules/lodash-es/_freeGlobal.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -34509,11 +34509,17 @@ var _shoppingCart = _interopRequireWildcard(require("./shoppingCart.js"));
 
 var _lodashEs = _interopRequireDefault(require("lodash-es"));
 
+var _Jonas;
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 console.log('Importing Module'); // Importing Module
 //import { addToCart, totalPrice as price, tq } from './shoppingCart.js';
@@ -34582,7 +34588,7 @@ console.log(ShoppingCart2.shippingCost);
 ///////////////// Introdution to NPM ////////////////////////////////
 //import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 
-const state = {
+var state = {
   cart: [{
     product: 'bread',
     quantity: 5
@@ -34594,8 +34600,8 @@ const state = {
     loggedIn: true
   }
 };
-const stateClone = Object.assign({}, state);
-const stateDeepClone = (0, _lodashEs.default)(state);
+var stateClone = Object.assign({}, state);
+var stateDeepClone = (0, _lodashEs.default)(state);
 state.user.loggedIn = false;
 console.log(stateClone); //// Lodash clone didnt change
 
@@ -34605,17 +34611,20 @@ if (module.hot) {
   module.hot.accept();
 }
 
-class Person {
-  greeting = 'Hey';
+var Person = function Person(name) {
+  _classCallCheck(this, Person);
 
-  constructor(name) {
-    this.name = name;
-    console.log(`${this.greeting}, ${this.name}`);
-  }
+  _defineProperty(this, "greeting", 'Hey');
 
-}
+  this.name = name;
+  console.log("".concat(this.greeting, ", ").concat(this.name));
+};
 
-const jonas = new Person('Jonas');
+var jonas = new Person('Jonas');
+console.log((_Jonas = 'Jonas') !== null && _Jonas !== void 0 ? _Jonas : null);
+console.log(_shoppingCart.cart.find(function (el) {
+  return el.quantity >= 2;
+}));
 },{"./shoppingCart.js":"shoppingCart.js","lodash-es":"node_modules/lodash-es/lodash.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -34644,7 +34653,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56189" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65380" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

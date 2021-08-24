@@ -1,0 +1,23 @@
+{
+  "name": "17-modern-js-modules-tooling",
+  "version": "1.0.0",
+  "description": "",
+  "browserslist": [
+    "last 1 Chrome versions"
+  ],
+  "main": "script.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Kian",
+  "license": "ISC",
+  "dependencies": {
+    "leaflet": "^1.7.1",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "npm": "^7.21.0",
+    "parcel-bundler": "^1.12.5"
+  }
+}

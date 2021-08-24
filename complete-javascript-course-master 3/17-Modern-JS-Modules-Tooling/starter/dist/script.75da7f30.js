@@ -34604,6 +34604,18 @@ console.log(stateDeepClone); //// Load parts that are changed ///
 if (module.hot) {
   module.hot.accept();
 }
+
+class Person {
+  greeting = 'Hey';
+
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.greeting}, ${this.name}`);
+  }
+
+}
+
+const jonas = new Person('Jonas');
 },{"./shoppingCart.js":"shoppingCart.js","lodash-es":"node_modules/lodash-es/lodash.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -34632,7 +34644,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57551" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56189" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

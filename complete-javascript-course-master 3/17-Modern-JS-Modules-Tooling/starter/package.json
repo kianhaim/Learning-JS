@@ -17,6 +17,7 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.15.0",
     "npm": "^7.21.0",
     "parcel-bundler": "^1.12.5"
   }

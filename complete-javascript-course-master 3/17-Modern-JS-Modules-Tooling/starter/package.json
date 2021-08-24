@@ -2,8 +2,9 @@
   "name": "17-modern-js-modules-tooling",
   "version": "1.0.0",
   "description": "",
+  "default": "index.html",
   "browserslist": [
-    "last 1 Chrome versions"
+    "defaults"
   ],
   "main": "script.js",
   "scripts": {
@@ -14,7 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "leaflet": "^1.7.1",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "parcel": "^2.0.0-rc.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.0",

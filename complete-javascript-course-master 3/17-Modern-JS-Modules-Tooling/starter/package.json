@@ -14,9 +14,11 @@
   "author": "Kian",
   "license": "ISC",
   "dependencies": {
+    "core-js": "^3.6.5",
     "leaflet": "^1.7.1",
     "lodash-es": "^4.17.21",
-    "parcel": "^2.0.0-rc.0"
+    "parcel": "^2.0.0-rc.0",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.0",

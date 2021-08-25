@@ -115,3 +115,11 @@ console.log('Jonas' ?? null);
 console.log(cart.find(el => el.quantity >= 2));
 
 Promise.resolve('Test').then(x => console.log(x));
+
+//////////////// Import Polifilling //////////////
+
+import 'core-js/stable';
+//import 'core-js/stable/array/find';
+
+//////////////PoliFilling async functions///////////////////
+import 'regenerator-runtime/runtime';

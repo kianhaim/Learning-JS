@@ -19,7 +19,7 @@ const spendingLimits = Object.freeze({
 });
 
 // spendingLimits.jay = 200;
-console.log(spendingLimits);
+//console.log(spendingLimits);
 // const limit = spendingLimits[user] ? spendingLimits[user] : 0;
 const getLimit = (limits, user) => limits?.[user] ?? 0;
 
@@ -49,8 +49,8 @@ const newBudget2 = addExpense(
 );
 const newBudget3 = addExpense(newBudget2, spendingLimits, 200, 'Stuff', 'Jay');
 
-console.log(newBudget1);
-console.log(newBudget2);
+//console.log(newBudget1);
+//console.log(newBudget2);
 
 // const checkExpenses2 = function (state, limits) {
 //   return state.map(entry => {
@@ -71,17 +71,25 @@ const checkExpenses = (state, limits) =>
   );
 
 const finalBudget = checkExpenses(newBudget3, spendingLimits);
-console.log(finalBudget);
+//console.log(finalBudget);
 
-const logBigExpenses = function (bigLimit) {
-  let output = '';
-  for (const entry of budget)
-    output +=
-      entry.value <= -bigLimit ? `${entry.description.slice(-2)} / ` : '';
+////////// IMPURE function /////////////////
+const logBigExpenses = function (state, bigLimit) {
+  let bigExpenses = state
+    .filter(entry => entry.value <= -bigLimit)
+    .map(entry => entry.description.slice(-2))
+    .join('/');
+  // .reduce((str, cur) => `${str} / ${cur.description.slice(-2)}`, '');
 
-  output = output.slice(0, -2); // Remove last '/ '
-  console.log(output);
+  console.log(bigExpenses);
+
+  // let output = '';
+  // for (const entry of budget)
+  //   output +=
+  //     entry.value <= -bigLimit ? `${entry.description.slice(-2)} / ` : '';
+  // output = output.slice(0, -2); // Remove last '/ '
+  // console.log(output);
 };
 
 console.log(budget);
-logBigExpenses(500);
+logBigExpenses(finalBudget, 500);

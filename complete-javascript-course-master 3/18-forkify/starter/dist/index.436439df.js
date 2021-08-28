@@ -478,12 +478,15 @@ const renderSpinner = function(parentEl) {
 ///////////////////////////////////////
 const showRecipe = async function() {
     try {
+        ////Getting the ID///////
+        const id = window.location.hash.slice(1);
+        console.log(id);
         // 1 Loading Recipe
         renderSpinner(recipeContainer);
         const res = await fetch('https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bcc40');
         const data = await res.json();
         if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-        console.log(res, data);
+        //console.log(res, data);
         let { recipe  } = data.data;
         recipe = {
             id: recipe.id,
@@ -507,6 +510,8 @@ const showRecipe = async function() {
     }
 };
 showRecipe();
+////////////// Event listener for the Hash /////////////
+window.addEventListener('hashchange', showRecipe);
 
 },{"url:../img/icons.svg":"iwCpK","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","core-js/stable":"eIyVg","regenerator-runtime/runtime":"cH8Iq"}],"iwCpK":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('8LZRF') + "icons.c097e590.svg";

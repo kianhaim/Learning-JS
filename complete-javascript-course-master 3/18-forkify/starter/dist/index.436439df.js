@@ -478,7 +478,7 @@ const constrolRecipes = async function() {
         // 2) Rendering Recipe
         _recipeViewJsDefault.default.render(_modelJs.state.recipe);
     } catch (err) {
-        console.log(err);
+        _recipeViewJsDefault.default.renderError();
     }
 };
 const init = function() {
@@ -12817,8 +12817,9 @@ const loadRecipe = async function(id) {
         };
         console.log(state.recipe);
     } catch (err) {
-    /// Temp Error Handling
-    // console.error(`${err}🎲`);
+        /// Temp Error Handling
+        //console.error(`${err}🎲!!!!!!!!!!!!!!!!`);
+        throw err;
     }
 };
 
@@ -12872,6 +12873,8 @@ console.log(_fractional.Fraction);
 class RecipeView {
     #parentElement = document.querySelector('.recipe');
     #data;
+    #errorMessage = `We cound not find the recipe, Please try another one!`;
+    #message = ``;
     render(data) {
         this.#data = data;
         const markup = this.#generateMarkup();
@@ -12881,11 +12884,29 @@ class RecipeView {
      #clear() {
         this.#parentElement.innerHTML = '';
     }
-    renderSpinner = function() {
+    renderSpinner() {
         const markup = `\n    <div class="spinner">\n    <svg>\n      <use href="${_iconsSvgDefault.default}#icon-loader"></use>\n    </svg>\n  </div> \n  `;
-        this.#parentElement.innerHTML = '';
+        this.#clear();
         this.#parentElement.insertAdjacentHTML('afterbegin', markup);
-    };
+    }
+    renderError(message = this.#errorMessage) {
+        const markup = `<div class="error">\n    <div>\n      <svg>\n        <use href="${_iconsSvgDefault.default}#icon-alert-triangle"></use>\n      </svg>\n    </div>\n    <p>${message}</p>\n  </div>`;
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    }
+    addHandlerRender(handler) {
+        ////////////// Event listener for the Hash /////////////
+        [
+            'hashchange',
+            'load'
+        ].forEach((ev)=>window.addEventListener(ev, handler)
+        );
+    }
+    renderMessage(message = this.#message) {
+        const markup = `<div class="message">\n    <div>\n      <svg>\n        <use href="${_iconsSvgDefault.default}#icon-smile""></use>\n      </svg>\n    </div>\n    <p>${message}</p>\n  </div>`;
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    }
     addHandlerRender(handler) {
         ////////////// Event listener for the Hash /////////////
         [

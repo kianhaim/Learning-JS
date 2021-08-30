@@ -8,6 +8,10 @@ import resultsView from './view/resultsView.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 const controlRecipes = async function () {
   try {
     ////Getting the ID///////
@@ -33,6 +37,7 @@ const controlRecipes = async function () {
 const controlSearchResults = async function () {
   try {
     resultsView.renderSpinner();
+    // console.log(resultsView);
     // 1) Get Search Query
     const query = searchView.getQuery();
     if (!query) return;
@@ -42,6 +47,7 @@ const controlSearchResults = async function () {
 
     //3) Render Results
     console.log(model.state.search.results);
+    resultsView.render(model.state.search.results);
   } catch (err) {
     console.log(err);
   }

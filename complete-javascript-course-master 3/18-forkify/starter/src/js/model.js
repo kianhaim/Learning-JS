@@ -33,7 +33,7 @@ export const loadRecipe = async function (id) {
     if (state.bookmarks.some(bookmark => bookmark.id === id))
       state.recipe.bookmarked = true;
     else state.recipe.bookmarked = false;
-    console.log(state.recipe);
+    //  console.log(state.recipe);
   } catch (err) {
     /// Temp Error Handling
     console.error(`${err}🎲!!!!!!!!!!!!!!!!`);
@@ -104,4 +104,21 @@ const init = function () {
   if (storage) state.bookmarks = JSON.parse(storage);
 };
 init();
-console.log(state.boomarks);
+//console.log(state.boomarks);
+
+const clearBookmarks = function () {
+  localStorage.clear('bookmarks');
+};
+// clearBookmarks();
+
+export const uploadRecipe = async function (newRecipe) {
+  // console.log(Object.entries(newRecipe));
+  const ingredients = Object.entries(newRecipe)
+    .filter(entry => entry[0].start('ingredient') && entry[1] !== '')
+    .map(ing => {
+      const [quantity, unit, description] = ing.replaceAll(' ', '').split(',');
+
+      return { quantity, unit, description };
+    });
+  console.log(ingredients);
+};

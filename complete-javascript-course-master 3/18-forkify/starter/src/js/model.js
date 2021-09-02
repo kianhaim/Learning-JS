@@ -1,8 +1,8 @@
 import { async } from 'regenerator-runtime';
 import { API_URL } from './config.js';
 import { RES_PER_PAGE, KEY } from './config.js';
-import { getJSON } from './helpers.js';
-import { sendJSON } from './helpers.js';
+//import { getJSON, sendJSON}  from './helpers.js'
+import { AJAX } from './helpers.js';
 
 export const state = {
   recipe: {},
@@ -17,7 +17,7 @@ export const state = {
 
 const createRecipeObject = function (data) {
   const { recipe } = data.data;
-  state.recipe = {
+  return (state.recipe = {
     id: recipe.id,
     title: recipe.title,
     publisher: recipe.publisher,
@@ -26,11 +26,14 @@ const createRecipeObject = function (data) {
     servings: recipe.servings,
     cookingTime: recipe.cooking_time,
     ingredients: recipe.ingredients,
-  };
+    //Short curcuiting
+    ...(recipe.key && { key: recipe.key }),
+    //key:recipe.key
+  });
 };
 export const loadRecipe = async function (id) {
   try {
-    const data = await getJSON(`${API_URL}/${id}`);
+    const data = await AJAX(`${API_URL}/${id}?key=${KEY}`);
 
     state.recipe = createRecipeObject(data);
     //console.log(res, data);
@@ -49,7 +52,7 @@ export const loadRecipe = async function (id) {
 export const loadSearchResults = async function (query) {
   try {
     state.search.query = query;
-    const data = await getJSON(`${API_URL}?search=${query}`);
+    const data = await AJAX(`${API_URL}?search=${query}&key=${KEY}`);
     //console.log(data);
 
     state.search.results = data.data.recipes.map(rec => {
@@ -144,8 +147,9 @@ export const uploadRecipe = async function (newRecipe) {
 
     //console.log(recipe);
 
-    const data = await sendJSON(`${API_URL}?key=${KEY}`, recipe);
-    console.log(data);
+    const data = await AJAX(`${API_URL}?key=${KEY}`, recipe);
+    state.recipe = createRecipeObject(data);
+    addBookmark(state.recipe);
   } catch (err) {
     throw err;
   }

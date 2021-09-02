@@ -5,6 +5,7 @@ import resultsView from './view/resultsView.js';
 import paginationView from './view/paginationView.js';
 import bookmarksView from './view/bookmarksView.js';
 import addRecipeView from './view/addRecipeView.js';
+import { MODAL_CLOSE_SEC } from './config.js';
 
 // import icons from '../img/icons.svg';
 
@@ -107,7 +108,32 @@ const controlBookmarks = function () {
 
 const controlAddRecipe = async function (newRecipe) {
   try {
+    // Showing Loading spinner
+
+    addRecipeView.renderSpinner();
+
+    // Upload new Recipe
     await model.uploadRecipe(newRecipe);
+    console.log(model.state.recipe);
+
+    //Render Recipe
+    recipeView.render(model.state.recipe);
+
+    // Succes Messege
+    addRecipeView.renderMessage();
+
+    // Render Bookmark View
+    bookmarksView.render(model.state.bookmarks);
+
+    // Change ID in the URL
+
+    window.history.pushState(null, '', `#${model.state.recipe.id}`);
+
+    //Close Form Window
+
+    setTimeout(function () {
+      // addRecipeView.toggleWindow();
+    }, MODAL_CLOSE_SEC * 1000);
   } catch (err) {
     console.error('💥', err);
     addRecipeView.renderError(err.message);
